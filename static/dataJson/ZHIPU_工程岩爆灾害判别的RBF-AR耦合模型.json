@@ -1,17 +1,15 @@
 {
   "tables": [
     {
-      "table_id": 1,
-      "is_continuation": false,
-      "source_caption": "表3 国内外地下工程岩爆分析结果",
+      "caption": "Table 3 Rockburst analysis results of some underground rock project",
       "headers": [
-        "工程名称",
+        "No.",
         "σc",
         "σt",
         "σθ",
         "Kv",
-        "σc/σt",
-        "σθ/σc",
+        "B1",
+        "SCF",
         "Wet",
         "MR"
       ],
@@ -50,7 +48,7 @@
           1
         ],
         [
-          "挪威 Heggen 公路隧道",
+          "挪威 Heggura 公路隧道",
           185,
           7.7,
           68.5,
@@ -72,7 +70,7 @@
           2
         ],
         [
-          "瑞典 Forsmark 核电站冷水源",
+          "瑞典 Forsmark 核电冷水隧道",
           194,
           8.9,
           75.6,
@@ -83,7 +81,7 @@
           2
         ],
         [
-          "拉西瓦水电站厂房",
+          "拉西瓦水电站地下厂房",
           181,
           7.5,
           57.9,
@@ -149,7 +147,7 @@
           1
         ],
         [
-          "布基鲁水电站引水隧道",
+          "布鲁革水电站引水隧道",
           213,
           7.7,
           49.0,
@@ -160,7 +158,7 @@
           0
         ],
         [
-          "苏联 Rasmuv 矿井巷",
+          "苏联 Rasvum 矿井巷",
           196,
           9.0,
           62.7,
@@ -168,7 +166,7 @@
           21.7,
           0.32,
           5.0,
-          1
+          2
         ],
         [
           "李家峡水电站地下洞室",
@@ -206,23 +204,21 @@
       ]
     },
     {
-      "table_id": 2,
-      "is_continuation": false,
-      "source_caption": "表4 工程实例判定检测表",
+      "caption": "Table 4 Engineering judgements testing table",
       "headers": [
-        "工程名称",
+        "No.",
         "σc",
         "σt",
         "σθ",
         "Kv",
-        "σc/σt",
-        "σθ/σc",
+        "B1",
+        "SCF",
         "Wet",
         "MR"
       ],
       "rows": [
         [
-          "冬瓜山铜矿卡岩巷道",
+          "冬瓜山铜矿矽卡岩巷道",
           156,
           13.9,
           31.2,
@@ -255,7 +251,7 @@
           1
         ],
         [
-          "意大利 Raibi 钛化锌矿井巷",
+          "意大利 Raibi 硫化锌矿井巷",
           172,
           9.8,
           132.4,
@@ -268,17 +264,15 @@
       ]
     },
     {
-      "table_id": 3,
-      "is_continuation": false,
-      "source_caption": "表5 终南山隧道竖井工程岩爆实测数据与判别结果",
+      "caption": "Table 5 Measured data for rock burst and prediction of Zhongnanshan tunnel ventilation shaft",
       "headers": [
-        "H",
+        "No.",
         "σc",
         "σt",
         "σθ",
         "Kv",
-        "σc/σt",
-        "σθ/σc",
+        "B1",
+        "SCF",
         "Wet",
         "MR"
       ],

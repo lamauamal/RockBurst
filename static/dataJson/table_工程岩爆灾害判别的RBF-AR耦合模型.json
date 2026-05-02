@@ -1,0 +1,50 @@
+[
+    {
+        "page": 3,
+        "captions": [
+            "表 1 岩爆判别等级标准",
+            "Table 1 Classification criterion of rock burst"
+        ],
+        "html": "<table><tr><td rowspan=\"2\">岩爆等级</td><td colspan=\"4\">判别指标</td></tr><tr><td>Kv</td><td>σc/σt</td><td>σθ/σc</td><td>Wet</td></tr><tr><td>无岩爆(I)</td><td>[0,0.50]</td><td>&gt;40.0</td><td>&lt;0.3</td><td>[0,2.0]</td></tr><tr><td>轻微岩爆(II)</td><td>(0.50,0.65]</td><td>(26.7,40.0]</td><td>[0.3,0.5)</td><td>(2.0,3.5]</td></tr><tr><td>中等岩爆(III)</td><td>(0.65,0.80]</td><td>[14.5,26.7]</td><td>[0.5,0.7]</td><td>(3.5,5.0]</td></tr><tr><td>强岩爆(IV)</td><td>(0.80,1.00]</td><td>&lt;14.5</td><td>&gt;0.7</td><td>&gt;5.0</td></tr></table>"
+    },
+    {
+        "page": 3,
+        "captions": [
+            "表 2 RBF-AR 计算阀值",
+            "Table 2 Classification threshold value of RBF-AR"
+        ],
+        "html": "<table><tr><td>岩爆烈度</td><td>无岩爆(I)</td><td>弱岩爆(II)</td><td>中等岩爆(III)</td><td>强岩爆(IV)</td></tr><tr><td>RBF-AR计算阀值</td><td>[0,0.25)</td><td>[0.25,0.50)</td><td>[0.50,0.75)</td><td>[0.75,1.0]</td></tr></table>"
+    },
+    {
+        "page": 3,
+        "captions": [
+            "表 3 国内外地下工程岩爆分析结果",
+            "Table 3 Rockburst analysis results of some underground rock project"
+        ],
+        "html": "<table><tr><td rowspan=\"2\">工程名称</td><td colspan=\"7\">判别指标</td><td colspan=\"2\">RBF-AR 模型阀值输入</td><td rowspan=\"2\">实际情况</td></tr><tr><td>σc/MPa</td><td>σt/MPa</td><td>σθ/MPa</td><td>Kv</td><td>σc/σt</td><td>σθ/σc</td><td>Wet</td><td>特征变量区间</td><td>等级</td></tr><tr><td>龙羊峡水电站地下洞室</td><td>238</td><td>7.6</td><td>30.9</td><td>0.70</td><td>31.2</td><td>0.13</td><td>7.4</td><td>[0,0.25)</td><td>I</td><td>无岩爆</td></tr><tr><td>天生桥二级水电站引水隧道</td><td>215</td><td>9.0</td><td>64.5</td><td>0.73</td><td>24</td><td>0.3</td><td>6.6</td><td>[0.50,0.75)</td><td>III</td><td>中强岩爆</td></tr><tr><td>冬瓜山铜矿大理岩巷道</td><td>151</td><td>18.2</td><td>75.5</td><td>0.52</td><td>8.3</td><td>0.5</td><td>3.1</td><td>[0.25,0.5)</td><td>II</td><td>中弱岩爆</td></tr><tr><td>挪威 Heggura 公路隧道</td><td>185</td><td>7.7</td><td>68.5</td><td>0.69</td><td>24.1</td><td>0.37</td><td>5.0</td><td>[0.50,0.75)</td><td>III</td><td>中等岩爆</td></tr><tr><td>日本关越隧道</td><td>153</td><td>6.9</td><td>58.2</td><td>0.72</td><td>22.1</td><td>0.38</td><td>5.1</td><td>[0.50,0.75)</td><td>III</td><td>中强岩爆</td></tr><tr><td>瑞典 Forsmark 核电冷水隧道</td><td>194</td><td>8.9</td><td>75.6</td><td>0.81</td><td>21.7</td><td>0.39</td><td>5.0</td><td>[0.50,0.75)</td><td>II</td><td>中等岩爆</td></tr><tr><td>拉西瓦水电站地下厂房</td><td>181</td><td>7.5</td><td>57.9</td><td>0.77</td><td>24.1</td><td>0.32</td><td>9.3</td><td>[0.25,0.5)</td><td>II</td><td>弱岩爆</td></tr><tr><td>瀑布沟水电站地下洞室</td><td>203</td><td>8.3</td><td>73.1</td><td>0.72</td><td>24.6</td><td>0.36</td><td>4.9</td><td>[0.25,0.5)</td><td>II</td><td>偶有岩爆现象</td></tr><tr><td>锦屏二级水电站引水隧洞</td><td>152</td><td>8.2</td><td>124.1</td><td>0.80</td><td>18.5</td><td>0.82</td><td>3.8</td><td>[0.25,0.5)</td><td>II</td><td>中弱岩爆</td></tr><tr><td>挪威 Sewage 隧道</td><td>173</td><td>8.0</td><td>72.6</td><td>0.74</td><td>21.7</td><td>0.42</td><td>5.2</td><td>[0.50,0.75)</td><td>III</td><td>中等岩爆</td></tr><tr><td>鱼子溪水电站引水隧道</td><td>157</td><td>10.6</td><td>83.2</td><td>0.71</td><td>14.8</td><td>0.53</td><td>9.0</td><td>[0.50,0.75)</td><td>III</td><td>中强岩爆</td></tr><tr><td>前苏联基洛夫矿山</td><td>183</td><td>9.0</td><td>54.9</td><td>0.65</td><td>20.4</td><td>0.30</td><td>5.1</td><td>[0.25,0.5)</td><td>II</td><td>轻微岩爆</td></tr><tr><td>布鲁革水电站引水隧道</td><td>213</td><td>7.7</td><td>49.0</td><td>0.59</td><td>27.8</td><td>0.23</td><td>7.8</td><td>[0,0.25)</td><td>I</td><td>无岩爆</td></tr><tr><td>苏联 Rasvum 矿井巷</td><td>196</td><td>9.0</td><td>62.7</td><td>0.72</td><td>21.7</td><td>0.32</td><td>5.0</td><td>[0.50,0.75)</td><td>III</td><td>中等岩爆</td></tr><tr><td>李家峡水电站地下洞室</td><td>241</td><td>10.4</td><td>24.1</td><td>0.70</td><td>23.0</td><td>0.10</td><td>5.7</td><td>[0,0.25)</td><td>I</td><td>无岩爆</td></tr><tr><td>挪威 Sima 水电站地下厂房</td><td>187</td><td>8.6</td><td>50.5</td><td>0.81</td><td>21.7</td><td>0.27</td><td>5.0</td><td>[0.50,0.75)</td><td>III</td><td>中强岩爆</td></tr><tr><td>瑞典 Vietas 水电站引水隧道</td><td>179</td><td>6.7</td><td>78.8</td><td>0.56</td><td>26.7</td><td>0.44</td><td>5.5</td><td>[0.25,0.5)</td><td>II</td><td>轻微岩爆</td></tr></table>"
+    },
+    {
+        "page": 4,
+        "captions": [
+            "表 4 工程实例判定检测表",
+            "Table 4 Engineering judgements testing table"
+        ],
+        "html": "<table><tr><td rowspan=\"2\">工程名称</td><td colspan=\"7\">判别指标</td><td colspan=\"2\">RBF-AR输出</td><td rowspan=\"2\">实际情况</td></tr><tr><td>σc/MPa</td><td>σt/MPa</td><td>σθ/MPa</td><td>Kv</td><td>σc/σt</td><td>σθ/σc</td><td>Wct</td><td>特征计算值</td><td>等级</td></tr><tr><td>冬瓜山铜矿矽卡岩巷道</td><td>156</td><td>13.9</td><td>31.2</td><td>0.44</td><td>11.2</td><td>0.2</td><td>3.6</td><td>0.18</td><td>I</td><td>无岩爆</td></tr><tr><td>太平驿水电站引水隧道</td><td>162</td><td>9.2</td><td>61.6</td><td>0.78</td><td>17.6</td><td>0.38</td><td>9.0</td><td>0.71</td><td>III</td><td>中等岩爆</td></tr><tr><td>二滩水电站2号支洞</td><td>192</td><td>6.5</td><td>78.1</td><td>0.85</td><td>29.7</td><td>0.41</td><td>7.3</td><td>0.32</td><td>II</td><td>轻微岩爆</td></tr><tr><td>意大利 Raibi 硫化锌矿井巷</td><td>172</td><td>9.8</td><td>132.4</td><td>0.82</td><td>17.5</td><td>0.77</td><td>5.5</td><td>0.90</td><td>IV</td><td>强岩爆</td></tr></table>"
+    },
+    {
+        "page": 5,
+        "captions": [
+            "表 5 终南山隧道竖井工程岩爆实测数据与判测结果",
+            "Table 5 Measured data for rock burst and prediction of Zhongnanshan tunnel ventilation shaft"
+        ],
+        "html": "<table><tr><td rowspan=\"2\">竖井深度/ /m</td><td colspan=\"7\">实测岩体力学参数</td><td colspan=\"2\">RBF-AR判别</td><td rowspan=\"2\">实际情况</td></tr><tr><td>σc/MPa</td><td>σt/MPa</td><td>σθ/MPa</td><td>Kv</td><td>σc/σt</td><td>σθ/σc</td><td>Wet</td><td>特征计算值</td><td>等级</td></tr><tr><td>-119</td><td>122</td><td>5.38</td><td>43.1</td><td>0.63</td><td>22.7</td><td>0.35</td><td>3.31</td><td>0.21</td><td>II</td><td>弱岩爆</td></tr><tr><td>-283</td><td>121</td><td>8.73</td><td>87.5</td><td>0.91</td><td>13.9</td><td>0.72</td><td>9.05</td><td>0.93</td><td>IV</td><td>强岩爆</td></tr><tr><td>-316</td><td>124</td><td>8.64</td><td>79.1</td><td>0.96</td><td>14.4</td><td>0.64</td><td>7.74</td><td>0.87</td><td>IV</td><td>强岩爆</td></tr><tr><td>-467</td><td>119</td><td>7.21</td><td>56.2</td><td>0.84</td><td>16.5</td><td>0.47</td><td>5.52</td><td>0.72</td><td>III</td><td>中等岩爆</td></tr><tr><td>-659</td><td>120</td><td>6.45</td><td>62.8</td><td>0.87</td><td>18.6</td><td>0.52</td><td>4.16</td><td>0.69</td><td>III</td><td>中等岩爆</td></tr></table>"
+    },
+    {
+        "page": 5,
+        "captions": [
+            "表 6 岩爆地段支护参数",
+            "Table 6 Supporting parameters in rockburst area"
+        ],
+        "html": "<table><tr><td rowspan=\"2\">岩爆烈度</td><td colspan=\"2\">锚杆(φ22)</td><td rowspan=\"2\">喷混凝土厚度/mm</td><td rowspan=\"2\">钢筋网φ8间距</td><td rowspan=\"2\">二次衬砌C30混凝土厚度/mm</td></tr><tr><td>间距</td><td>长度/m</td></tr><tr><td>无岩爆(I)</td><td>局部</td><td>2.0</td><td>80</td><td>200 mm×200 mm(局部)</td><td>400~450</td></tr><tr><td>弱岩爆(II)</td><td>1.5 m×1.5 m</td><td>3.0</td><td>120</td><td>200 mm×200 mm</td><td>500</td></tr><tr><td>中等岩爆(III)</td><td>1.0 m×1.0 m</td><td>3.5</td><td>200</td><td>200 mm×200 mm</td><td>800</td></tr></table>"
+    }
+]

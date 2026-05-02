@@ -1,0 +1,429 @@
+{
+    "pdf_info": [
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        107,
+                        132,
+                        352,
+                        146
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                107,
+                                132,
+                                352,
+                                146
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        107,
+                                        132,
+                                        352,
+                                        146
+                                    ],
+                                    "type": "text",
+                                    "content": "2.4基于Fisher判别北山花岗岩岩爆等级研究"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 1
+                },
+                {
+                    "bbox": [
+                        107,
+                        163,
+                        283,
+                        176
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                107,
+                                163,
+                                283,
+                                176
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        107,
+                                        163,
+                                        283,
+                                        176
+                                    ],
+                                    "type": "text",
+                                    "content": "2.4.1北山花岗岩Fisher分级准则研究"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 2
+                },
+                {
+                    "bbox": [
+                        107,
+                        187,
+                        486,
+                        269
+                    ],
+                    "type": "text",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                107,
+                                187,
+                                486,
+                                269
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        107,
+                                        187,
+                                        486,
+                                        269
+                                    ],
+                                    "type": "text",
+                                    "content": "一般来说，分析影响岩爆的因素越多，分析结构越准确，但随着因素的增加一方面在使用上带来困难，另一方面容易掩盖主要影响因素。综合考虑选择代表岩石脆性特征的脆性系数 "
+                                },
+                                {
+                                    "bbox": [
+                                        107,
+                                        187,
+                                        486,
+                                        269
+                                    ],
+                                    "type": "inline_equation",
+                                    "content": "\\sigma_{c} / \\sigma_{t}"
+                                },
+                                {
+                                    "bbox": [
+                                        107,
+                                        187,
+                                        486,
+                                        269
+                                    ],
+                                    "type": "text",
+                                    "content": "，代表岩石储能性质的 "
+                                },
+                                {
+                                    "bbox": [
+                                        107,
+                                        187,
+                                        486,
+                                        269
+                                    ],
+                                    "type": "inline_equation",
+                                    "content": "W_{et}"
+                                },
+                                {
+                                    "bbox": [
+                                        107,
+                                        187,
+                                        486,
+                                        269
+                                    ],
+                                    "type": "text",
+                                    "content": "，以及代表工程应力影响的 Russense 指标 "
+                                },
+                                {
+                                    "bbox": [
+                                        107,
+                                        187,
+                                        486,
+                                        269
+                                    ],
+                                    "type": "inline_equation",
+                                    "content": "\\sigma_{\\theta} / \\sigma_{c}"
+                                },
+                                {
+                                    "bbox": [
+                                        107,
+                                        187,
+                                        486,
+                                        269
+                                    ],
+                                    "type": "text",
+                                    "content": "。岩爆等级的样本主要来自于国内外典型的岩爆案例，如表 2.8。"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 3
+                },
+                {
+                    "type": "table",
+                    "bbox": [
+                        104,
+                        301,
+                        490,
+                        656
+                    ],
+                    "blocks": [
+                        {
+                            "bbox": [
+                                254,
+                                279,
+                                339,
+                                290
+                            ],
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        254,
+                                        279,
+                                        339,
+                                        290
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                254,
+                                                279,
+                                                339,
+                                                290
+                                            ],
+                                            "type": "text",
+                                            "content": "表 2.8 岩爆等级样本"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 4,
+                            "angle": 0,
+                            "type": "table_caption"
+                        },
+                        {
+                            "bbox": [
+                                229,
+                                291,
+                                365,
+                                301
+                            ],
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        229,
+                                        291,
+                                        365,
+                                        301
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                229,
+                                                291,
+                                                365,
+                                                301
+                                            ],
+                                            "type": "text",
+                                            "content": "Tab. 2.8 Samples of rockburst grade"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 5,
+                            "angle": 0,
+                            "type": "table_caption"
+                        },
+                        {
+                            "bbox": [
+                                104,
+                                301,
+                                490,
+                                656
+                            ],
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        104,
+                                        301,
+                                        490,
+                                        656
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                104,
+                                                301,
+                                                490,
+                                                656
+                                            ],
+                                            "type": "table",
+                                            "html": "<table><tr><td rowspan=\"2\">序号</td><td colspan=\"3\">判别因子</td><td rowspan=\"2\">实际组别</td><td rowspan=\"2\">序号</td><td colspan=\"3\">判别因子</td><td rowspan=\"2\">实际组别</td></tr><tr><td>σθ/σc</td><td>σc/σt</td><td>Wet</td><td>σθ/σc</td><td>σc/σt</td><td>Wet</td></tr><tr><td>1</td><td>0.471</td><td>11.109</td><td>3.97</td><td>III</td><td>24</td><td>0.405</td><td>13.116</td><td>7.30</td><td>IV</td></tr><tr><td>2</td><td>0.526</td><td>14.108</td><td>5.76</td><td>III</td><td>25</td><td>0.356</td><td>7.588</td><td>7.50</td><td>II</td></tr><tr><td>3</td><td>0.478</td><td>9.764</td><td>7.27</td><td>III</td><td>26</td><td>0.630</td><td>4.479</td><td>3.17</td><td>II</td></tr><tr><td>4</td><td>0.425</td><td>13.982</td><td>7.44</td><td>III</td><td>27</td><td>0.783</td><td>17.974</td><td>1.90</td><td>IV</td></tr><tr><td>5</td><td>0.405</td><td>14.740</td><td>7.08</td><td>III</td><td>28</td><td>0.353</td><td>8.839</td><td>4.68</td><td>II</td></tr><tr><td>6</td><td>0.547</td><td>14.722</td><td>6.43</td><td>III</td><td>29</td><td>0.613</td><td>7.580</td><td>7.27</td><td>IV</td></tr><tr><td>7</td><td>0.271</td><td>21.687</td><td>5.00</td><td>III</td><td>30</td><td>0.443</td><td>13.429</td><td>6.38</td><td>IV</td></tr><tr><td>8</td><td>0.357</td><td>24.138</td><td>5.00</td><td>III</td><td>31</td><td>0.345</td><td>14.556</td><td>10.57</td><td>IV</td></tr><tr><td>9</td><td>0.417</td><td>21.687</td><td>5.00</td><td>III</td><td>32</td><td>0.470</td><td>21.767</td><td>3.17</td><td>II</td></tr><tr><td>10</td><td>0.317</td><td>21.687</td><td>5.00</td><td>III</td><td>33</td><td>0.490</td><td>13.396</td><td>6.53</td><td>III</td></tr><tr><td>11</td><td>0.377</td><td>28.434</td><td>5.00</td><td>III</td><td>34</td><td>0.136</td><td>30.769</td><td>2.22</td><td>I</td></tr><tr><td>12</td><td>0.385</td><td>21.667</td><td>5.00</td><td>III</td><td>35</td><td>0.131</td><td>30.769</td><td>2.22</td><td>I</td></tr><tr><td>13</td><td>0.771</td><td>17.500</td><td>5.50</td><td>IV</td><td>36</td><td>0.076</td><td>30.769</td><td>2.22</td><td>I</td></tr><tr><td>14</td><td>0.106</td><td>31.228</td><td>7.40</td><td>I</td><td>37</td><td>0.441</td><td>15.044</td><td>9.00</td><td>III</td></tr><tr><td>15</td><td>0.096</td><td>23.000</td><td>5.70</td><td>I</td><td>38</td><td>0.353</td><td>20.500</td><td>5.00</td><td>III</td></tr><tr><td>16</td><td>0.315</td><td>24.110</td><td>9.30</td><td>III</td><td>39</td><td>0.379</td><td>17.553</td><td>9.00</td><td>III</td></tr><tr><td>17</td><td>0.400</td><td>80.000</td><td>5.80</td><td>III</td><td>40</td><td>0.338</td><td>23.973</td><td>6.60</td><td>III</td></tr><tr><td>18</td><td>0.548</td><td>76.667</td><td>5.70</td><td>III</td><td>41</td><td>0.816</td><td>9.893</td><td>5.76</td><td>IV</td></tr><tr><td>19</td><td>0.450</td><td>73.333</td><td>5.70</td><td>III</td><td>42</td><td>0.345</td><td>33.333</td><td>5.76</td><td>III</td></tr><tr><td>20</td><td>0.374</td><td>12.702</td><td>3.20</td><td>II</td><td>43</td><td>0.342</td><td>22.056</td><td>6.38</td><td>IV</td></tr><tr><td>21</td><td>0.692</td><td>9.742</td><td>4.90</td><td>IV</td><td>44</td><td>0.144</td><td>14.054</td><td>1.30</td><td>I</td></tr><tr><td>22</td><td>0.052</td><td>13.426</td><td>6.90</td><td>I</td><td>45</td><td>0.250</td><td>20.771</td><td>3.80</td><td>I</td></tr><tr><td>23</td><td>0.217</td><td>13.571</td><td>9.10</td><td>III</td><td>46</td><td>0.150</td><td>20.771</td><td>3.80</td><td>I</td></tr></table>",
+                                            "image_path": "d09b35648a7f019ba419073c2c1a7b17e958ee47779531525bba69476ef724fb.jpg"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 6,
+                            "angle": 0,
+                            "type": "table_body"
+                        }
+                    ],
+                    "index": 6
+                },
+                {
+                    "bbox": [
+                        107,
+                        658,
+                        487,
+                        706
+                    ],
+                    "type": "text",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                107,
+                                658,
+                                487,
+                                706
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        107,
+                                        658,
+                                        487,
+                                        706
+                                    ],
+                                    "type": "text",
+                                    "content": "以上述3个岩爆等级分类指标作为Fisher判别因子，根据工程实例，将岩爆等级分为I级、Ⅱ级、Ⅲ级、Ⅳ级4个等级。由 "
+                                },
+                                {
+                                    "bbox": [
+                                        107,
+                                        658,
+                                        487,
+                                        706
+                                    ],
+                                    "type": "inline_equation",
+                                    "content": "\\sigma_{\\theta} / \\sigma_{c}"
+                                },
+                                {
+                                    "bbox": [
+                                        107,
+                                        658,
+                                        487,
+                                        706
+                                    ],
+                                    "type": "text",
+                                    "content": " 、 "
+                                },
+                                {
+                                    "bbox": [
+                                        107,
+                                        658,
+                                        487,
+                                        706
+                                    ],
+                                    "type": "inline_equation",
+                                    "content": "\\sigma_c / \\sigma_t"
+                                },
+                                {
+                                    "bbox": [
+                                        107,
+                                        658,
+                                        487,
+                                        706
+                                    ],
+                                    "type": "text",
+                                    "content": " 、Wet表示的构成的判别函数的统一表达式为："
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 7
+                }
+            ],
+            "discarded_blocks": [
+                {
+                    "bbox": [
+                        236,
+                        100,
+                        357,
+                        111
+                    ],
+                    "type": "header",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                236,
+                                100,
+                                357,
+                                111
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        236,
+                                        100,
+                                        357,
+                                        111
+                                    ],
+                                    "type": "text",
+                                    "content": "2北山花岗岩岩爆倾向性研究"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        291,
+                        720,
+                        301,
+                        729
+                    ],
+                    "type": "page_number",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                291,
+                                720,
+                                301,
+                                729
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        291,
+                                        720,
+                                        301,
+                                        729
+                                    ],
+                                    "type": "text",
+                                    "content": "31"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 8
+                }
+            ],
+            "page_size": [
+                595,
+                841
+            ],
+            "page_idx": 0
+        }
+    ],
+    "_backend": "hybrid",
+    "_ocr_enable": true,
+    "_vlm_ocr_enable": true,
+    "_version_name": "2.7.6"
+}
