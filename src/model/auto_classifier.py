@@ -1,10 +1,14 @@
+""""""
 # from add_datapreprocessor import NoPreprocessing # 自定义数据处理器
 # import autosklearn.pipeline.components.data_preprocessing
 # autosklearn.pipeline.components.data_preprocessing.add_preprocessor(NoPreprocessing) # 添加自定义数据处理器-不做数据处理（因为后续在 train 函数中做 RobustScaler 标准化）
-from add_classifier import XGBoostClassifier,CatBoostClassifier # 自定义分类器
+
+from add_classifier import XGBoost,CatBoost # 自定义分类器
 import autosklearn.pipeline.components.classification
-autosklearn.pipeline.components.classification.add_classifier(XGBoostClassifier)
-autosklearn.pipeline.components.classification.add_classifier(CatBoostClassifier)
+autosklearn.pipeline.components.classification.add_classifier(XGBoost)
+autosklearn.pipeline.components.classification.add_classifier(CatBoost)
+
+from newleaderboard import AutoSklearnClassifier_leaderboard # 修复源码 leaderboard 因键错误而无法从 runhistory 取出有效 datapreprocessor
 
 import pandas as pd
 import numpy as np
@@ -12,10 +16,10 @@ import os
 from datetime import datetime
 from sklearn.model_selection import train_test_split
 # from sklearn.preprocessing import RobustScaler
-from autosklearn.classification import AutoSklearnClassifier
+# from autosklearn.classification import AutoSklearnClassifier
 from autosklearn.metrics import balanced_accuracy, f1_macro, f1_micro, f1_weighted, log_loss
 from sklearn.metrics import roc_auc_score
-from smac.optimizer.smbo import SMBO  # 贝叶斯优化超参数搜索
+from smac.optimizer.smbo import SMBO
 from typing import Union
 from smac.runhistory.runhistory import RunInfo, RunValue
 from dotenv import load_dotenv
@@ -29,15 +33,15 @@ MERGECSV = os.path.join(project_root, os.getenv("DATA"))
 SEED = 42
 K_fold = 5
 featureslist = {'F-1': ['σθ', 'σc', 'σt', 'Wet'],
-                # 'F-2':['Wet', 'SCF', 'B1'],
-                # 'F-3':['Wet', 'SCF', 'B2'],
-                # 'F-4':['σθ','Wet', 'SCF'],
-                # 'F-5':['σθ','Wet', 'SCF', 'B1'],
-                # 'F-6':['σθ','Wet', 'SCF', 'B2'],
-                # 'F-7':['σθ','Wet', 'SCF', 'σc'],
-                # 'F-8':['σθ', 'σc', 'σt', 'Wet', 'SCF', 'B1', 'B2'],
-                # 'F-9':['σθ', 'σc', 'σt', 'Wet', 'SCF', 'B1'],
-                # 'F-10':['σθ', 'σc', 'σt', 'Wet', 'SCF', 'B2']
+                'F-2':['Wet', 'SCF', 'B1'],
+                'F-3':['Wet', 'SCF', 'B2'],
+                'F-4':['σθ','Wet', 'SCF'],
+                'F-5':['σθ','Wet', 'SCF', 'B1'],
+                'F-6':['σθ','Wet', 'SCF', 'B2'],
+                'F-7':['σθ','Wet', 'SCF', 'σc'],
+                'F-8':['σθ', 'σc', 'σt', 'Wet', 'SCF', 'B1', 'B2'],
+                'F-9':['σθ', 'σc', 'σt', 'Wet', 'SCF', 'B1'],
+                'F-10':['σθ', 'σc', 'σt', 'Wet', 'SCF', 'B2']
                 }
 
 
@@ -69,7 +73,6 @@ def callback(
 
     return None
 
-
 def get_pre_score(logpath, automl, y_test):
     """
     从 leaderboard 中定位每种分类器类型的最优模型位置，获取测试集预测结果（建模时需传入测试集），并计算预测指标
@@ -91,8 +94,9 @@ def get_pre_score(logpath, automl, y_test):
                     'roc_auc': rocauc
     },{...},...]
     """
-    leaderboard = automl.leaderboard(detailed=True, ensemble_only=False)
+    leaderboard = automl.leaderboard1(detailed=True, ensemble_only=False)
     leaderboard = leaderboard.reset_index() # 原来的 model_id 是索引名，经 reset_index 重新建立索引，原来的索引变为新列 model_id
+    print(leaderboard.to_string())
     best_per_type = (leaderboard
                      .sort_values(['type', 'rank'])  # 按 type 和 rank 排序
                      .groupby('type')
@@ -123,8 +127,8 @@ def get_pre_score(logpath, automl, y_test):
             'cv_cost': row['cost'],
             'cv_rank': row['rank'],
             'cv_duration': row['duration'],
-            'data_preprocessors': row['data_preprocessors'],
-            'feature_preprocessors': row['feature_preprocessors'],
+            'data_preprocessor': row['data_preprocessors'], # 数据处理选项名称（源码中只有一个可用选项 feature_type），数据标准化方法
+            'feature_preprocessor': row['feature_preprocessors'],
             'balancing_strategy': row['balancing_strategy'],
             'config_origin': row['config_origin'],
             'balanced_accuracy': b_accuracy,
@@ -140,9 +144,9 @@ def get_pre_score(logpath, automl, y_test):
     return results
 
 def ml_models(logsavepath):
-    automl = AutoSklearnClassifier(
-        time_left_for_this_task=60,  # 搜素模型的最长时间
-        per_run_time_limit=10,  # 训练单个模型的最长时间
+    automl = AutoSklearnClassifier_leaderboard(
+        time_left_for_this_task=20000,  # 搜素模型的最长时间
+        per_run_time_limit=1800,  # 训练单个模型的最长时间
         initial_configurations_via_metalearning=0,  # 超参数优化重新开始
         ensemble_class=None,  # 禁用集成构建
         max_models_on_disc=None,  # 保存所有模型
@@ -150,9 +154,8 @@ def ml_models(logsavepath):
         memory_limit=10240,  # 10GB 内存限制
         include={
             # "data_preprocessor":["NoPreprocessing"] # 不做数据处理，因为 robustscaler 后才传入数据
-            "feature_preprocessor": ["no_preprocessing"],  # 不做特征工程，因为已选定 10 种特征组合方案
-            "classifier": ["decision_tree"]
-            # "k_nearest_neighbors", "mlp", "libsvm_svc", "random_forest", "XGBoost", "CatBoost", “extra_trees”
+            "feature_preprocessor": ["no_preprocessing"],  # 不做特征工程，因为已结合参数物理意义选定 10 种特征组合方案
+            "classifier": ["decision_tree", "k_nearest_neighbors", "mlp", "libsvm_svc", "random_forest", "XGBoost", "CatBoost", "extra_trees"]
         },
         resampling_strategy='cv',  # 使用交叉验证
         resampling_strategy_arguments={
