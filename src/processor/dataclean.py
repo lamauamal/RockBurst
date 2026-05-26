@@ -1,5 +1,5 @@
-"""将dataJson下的所有result_.json转为.csv
-根据输入（期望的）列名（包含力学参数列名和岩爆等级列名）提取合并data下的所有.csv
+"""将 dataJson 下的所有 result_.json 转为 .csv
+根据输入（期望的）列名（包含力学参数列名和岩爆等级列名）提取合并 data 下的所有.csv
 """
 import csv
 import os
