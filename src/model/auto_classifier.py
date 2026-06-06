@@ -3,8 +3,8 @@
    2. 数据处理管道：使用所有可行数据处理方法，在模型外部做数据划分
    3. 特征处理管道：自定义添加特征处理管道为不做特征处理，因为已根据参数物理意义选定了 10 组特征组合方案（可以不预设，让分类器自动选择，只需不设置 "feature_preprocessor"，模型会使用所有可行策略）
    4. 选择了 7 个分类器："decision_tree", "k_nearest_neighbors", "mlp", "adaboost", "libsvm_svc", "random_forest", "extra_trees"
-   5. 日志保存在 static/models 下（由于磁盘空间有限，仅保存了测试分数和每种最佳模型，删除了其他日志信息），向模型传入了训练集和测试集（这里即使向 automl 模型传入了测试集，测试集始终是不参与训练的，只是做性能监测）
-要实现固定的数据标准化方法为 RobustScaler（相关代码已注释掉）：自定义数据处理器为 NoPreprocessing，表示不做数据处理（数据采集阶段已对样本类别做了从 0 开始的连续整数的统一映射，不需要使用内置的数据处理管道 feature_type）-> 输入automl模型前对数据做 RobustScaler（都按训练集数据来做，避免数据泄露）
+   5. 日志保存在 static/models 下（由于磁盘空间有限，仅保存了测试分数和每种最佳模型，删除了其他日志信息，可以注释相关代码以留存完整日志），向模型传入了训练集和测试集（这里虽然向 automl 模型传入了测试集，但测试集始终是不参与训练的，只是做性能监测）
+要实现固定的数据标准化方法为 RobustScaler（相关代码已注释）：自定义数据处理器为 NoPreprocessing，表示不做数据处理（数据采集阶段已对样本类别做了从 0 开始的连续整数的统一映射，不需要使用内置的数据处理管道 feature_type）-> 输入automl模型前对数据做 RobustScaler
 """
 # from add_datapreprocessor import NoPreprocessing # 自定义数据处理器
 # import autosklearn.pipeline.components.data_preprocessing
@@ -41,10 +41,12 @@ featureslist = {'F-1': ['σθ', 'σc', 'σt', 'Wet'],
                 'F-4':['σθ','Wet', 'SCF'],
                 'F-5':['σθ','Wet', 'SCF', 'B1'],
                 'F-6':['σθ','Wet', 'SCF', 'B2'],
-                'F-7':['σθ','Wet', 'SCF', 'σc'],
+                'F-7':['σθ','Wet', 'SCF', 'σt'],
                 'F-8':['σθ', 'σc', 'σt', 'Wet', 'SCF', 'B1', 'B2'],
                 'F-9':['σθ', 'σc', 'σt', 'Wet', 'SCF', 'B1'],
-                'F-10':['σθ', 'σc', 'σt', 'Wet', 'SCF', 'B2']
+                'F-10':['σθ', 'σc', 'σt', 'Wet', 'SCF', 'B2'],
+                'F-11':['Wet', 'σθ', 'B1'],
+                'F-12':['σθ', 'σc', 'σt', 'Wet', 'SCF']
                 }
 
 
