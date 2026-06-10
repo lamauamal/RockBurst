@@ -1,4 +1,4 @@
-"""基于 auto-sklearn 实现自动化机器学习：（src/model/see_pipelinecomponents.py 显示了所有可用的默认管道， 自定义管道需额外添加）
+"""基于 auto-sklearn 实现自动化机器学习，源码地址 https://github.com/automl/auto-sklearn：（src/model/see_pipelinecomponents.py 显示了所有可用的默认管道，自定义管道需额外添加）
    1. 数据划分：8：2的训练测试集
    2. 数据处理管道：使用所有可行数据处理方法，在模型外部做数据划分
    3. 特征处理管道：自定义添加特征处理管道为不做特征处理，因为已根据参数物理意义选定了 10 组特征组合方案（可以不预设，让分类器自动选择，只需不设置 "feature_preprocessor"，模型会使用所有可行策略）
