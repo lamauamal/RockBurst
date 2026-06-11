@@ -1,3 +1,35 @@
+# 目录
+- [配置信息](#配置信息)
+- [数据](#数据)
+  - [数据采集](#1数据采集)
+  - [数据清洗和存储](#2数据清洗和存储)
+  - [数据分析](#3数据分析)
+    - [分析原始数据分布](#分析原始数据分布)
+    - [数据分析结果](#数据分析结果)
+- [数据建模](#数据建模)
+  - [特征选择](#1特征选择)
+  - [评价指标](#2评价指标)
+  - [机器学习模型](#3机器学习模型)
+  - [特征组合与机器学习模型性能分析](#4特征组合与机器学习模型性能分析)
+
+# 配置信息
+环境信息见.yml
+
+项目根目录下新建 .env，API_KEY 换成自己的:
+```ini
+ZHIPU_API_KEY=YourKey
+ZHIPU_MODEL_NAME=glm-4.6v
+ZHIPU_API_URL=https://open.bigmodel.cn/api/paas/v4/chat/completions
+
+MINERU_API_BASE=https://mineru.net/api/v4
+MINERU_API_KEY=YourKey
+
+PDF_FOLDER=./static/datapdf
+JSON_FILE=./static/dataJson/example.json
+CSV_FILE=./static/data/example.csv
+PROMPT_FILE=./static/Prompt.txt
+DATA=./static/merge.csv
+```
 
 # 数据
 
