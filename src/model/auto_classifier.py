@@ -1,14 +1,17 @@
-""""""
+"""基于 auto-sklearn 实现自动化机器学习，源码地址 https://github.com/automl/auto-sklearn：（src/model/see_pipelinecomponents.py 显示了所有可用的默认管道，自定义管道需额外添加）
+   1. 数据划分：8：2的训练测试集
+   2. 数据处理管道：使用所有可行数据处理方法，在模型外部做数据划分
+   3. 特征处理管道：自定义添加特征处理管道为不做特征处理，因为已根据参数物理意义选定了 10 组特征组合方案（可以不预设，让分类器自动选择，只需不设置 "feature_preprocessor"，模型会使用所有可行策略）
+   4. 选择了 7 个分类器："decision_tree", "k_nearest_neighbors", "mlp", "adaboost", "libsvm_svc", "random_forest", "extra_trees"
+   5. 日志保存在 static/models 下（由于磁盘空间有限，仅保存了测试分数和每种最佳模型，删除了其他日志信息，可以注释相关代码以留存完整日志），向模型传入了训练集和测试集（这里虽然向 automl 模型传入了测试集，但测试集始终是不参与训练的，只是做性能监测）
+要实现固定的数据标准化方法为 RobustScaler（相关代码已注释）：自定义数据处理器为 NoPreprocessing，表示不做数据处理（数据采集阶段已对样本类别做了从 0 开始的连续整数的统一映射，不需要使用内置的数据处理管道 feature_type）-> 输入automl模型前对数据做 RobustScaler
+"""
 # from add_datapreprocessor import NoPreprocessing # 自定义数据处理器
 # import autosklearn.pipeline.components.data_preprocessing
 # autosklearn.pipeline.components.data_preprocessing.add_preprocessor(NoPreprocessing) # 添加自定义数据处理器-不做数据处理（因为后续在 train 函数中做 RobustScaler 标准化）
+import shutil
 
-from add_classifier import XGBoost,CatBoost # 自定义分类器
-import autosklearn.pipeline.components.classification
-autosklearn.pipeline.components.classification.add_classifier(XGBoost)
-autosklearn.pipeline.components.classification.add_classifier(CatBoost)
-
-from newleaderboard import AutoSklearnClassifier_leaderboard # 修复源码 leaderboard 因键错误而无法从 runhistory 取出有效 datapreprocessor
+from newleaderboard import AutoSklearnClassifier_leaderboard # 修复源码 leaderboard 因键错误而无法从 runhistory 取出有效 datapreprocessor（实际还取出了 rescaling）
 
 import pandas as pd
 import numpy as np
@@ -38,10 +41,14 @@ featureslist = {'F-1': ['σθ', 'σc', 'σt', 'Wet'],
                 'F-4':['σθ','Wet', 'SCF'],
                 'F-5':['σθ','Wet', 'SCF', 'B1'],
                 'F-6':['σθ','Wet', 'SCF', 'B2'],
-                'F-7':['σθ','Wet', 'SCF', 'σc'],
+                'F-7':['σθ','Wet', 'SCF', 'σt'],
                 'F-8':['σθ', 'σc', 'σt', 'Wet', 'SCF', 'B1', 'B2'],
                 'F-9':['σθ', 'σc', 'σt', 'Wet', 'SCF', 'B1'],
-                'F-10':['σθ', 'σc', 'σt', 'Wet', 'SCF', 'B2']
+                'F-10':['σθ', 'σc', 'σt', 'Wet', 'SCF', 'B2'],
+                'F-11':['Wet', 'σθ', 'B1'],
+                'F-12':['σθ', 'σc', 'σt', 'Wet', 'SCF'],
+                'F-13':['σθ', 'σt', 'Wet', 'SCF', 'B1'],
+                'F-14':['σθ', 'σt', 'Wet', 'B1']
                 }
 
 
@@ -96,7 +103,7 @@ def get_pre_score(logpath, automl, y_test):
     """
     leaderboard = automl.leaderboard1(detailed=True, ensemble_only=False)
     leaderboard = leaderboard.reset_index() # 原来的 model_id 是索引名，经 reset_index 重新建立索引，原来的索引变为新列 model_id
-    print(leaderboard.to_string())
+    # print(leaderboard.to_string())
     best_per_type = (leaderboard
                      .sort_values(['type', 'rank'])  # 按 type 和 rank 排序
                      .groupby('type')
@@ -105,11 +112,13 @@ def get_pre_score(logpath, automl, y_test):
     # print(best_per_type.to_string())
 
     results = []
+    model_paths = []
     for type, row in best_per_type.iterrows():
         model_id = row['model_id'] # 模型序号，可定位到具体模型位置（.../models/.../runs/seed_modelid_budget）
         seed = automl.automl_._seed
         budget = row['budget']
         # 可以通过源码（backend.py 关于包括模型在内的各种配置的保存和加载）知道日志文件的结构
+        model_path = os.path.join(logpath, f".auto-sklearn/runs/{seed}_{model_id}_{budget}/{seed}.{model_id}.{budget}.model")
         pre_path = os.path.join(logpath, f".auto-sklearn/runs/{seed}_{model_id}_{budget}/predictions_test_{seed}_{model_id}_{budget}.npy")
         y_pre_proba = np.load(pre_path, allow_pickle=True) # 获取每个测试样本的类别概率分布
         y_pred = np.argmax(y_pre_proba, axis=1) # 获取预测类别
@@ -139,14 +148,26 @@ def get_pre_score(logpath, automl, y_test):
             'roc_auc': rocauc
         }
         results.append(re)
-    pd.DataFrame(results).to_csv(os.path.join(logpath, 'myresults.csv'), index=False)
+        model_paths.append(model_path)
+    pd.DataFrame(results).to_csv(os.path.join(logpath,'results.csv') , index=False) # 保存每种最佳分类器的预测分数到 logpath 下
+    for model_path in model_paths:
+        shutil.move(model_path, logpath)  # 移动每种最佳分类器到 logpath 下
+    # 空间有限，只保存预测分数和每种最佳验证分数的分类器，删除其他日志文件（管道组件即超参数信息都在保存好的模型 .model 中）
+    for item_name in os.listdir(logpath):  # 遍历 logpath 下的一级目录名称
+        item_path = os.path.join(logpath, item_name)
 
+        if os.path.isfile(item_path):
+            _, ext = os.path.splitext(item_name)
+            if ext.lower() not in ['.csv', '.model']:
+                os.remove(item_path)
+        elif os.path.isdir(item_path):
+            shutil.rmtree(item_path)
     return results
 
 def ml_models(logsavepath):
     automl = AutoSklearnClassifier_leaderboard(
-        time_left_for_this_task=20000,  # 搜素模型的最长时间
-        per_run_time_limit=1800,  # 训练单个模型的最长时间
+        time_left_for_this_task=9000, # 搜素模型的最长时间
+        per_run_time_limit=1200,  # 训练单个模型的最长时间
         initial_configurations_via_metalearning=0,  # 超参数优化重新开始
         ensemble_class=None,  # 禁用集成构建
         max_models_on_disc=None,  # 保存所有模型
@@ -155,7 +176,7 @@ def ml_models(logsavepath):
         include={
             # "data_preprocessor":["NoPreprocessing"] # 不做数据处理，因为 robustscaler 后才传入数据
             "feature_preprocessor": ["no_preprocessing"],  # 不做特征工程，因为已结合参数物理意义选定 10 种特征组合方案
-            "classifier": ["decision_tree", "k_nearest_neighbors", "mlp", "libsvm_svc", "random_forest", "XGBoost", "CatBoost", "extra_trees"]
+            "classifier": ["decision_tree", "k_nearest_neighbors", "mlp", "adaboost", "libsvm_svc", "random_forest", "extra_trees"]
         },
         resampling_strategy='cv',  # 使用交叉验证
         resampling_strategy_arguments={

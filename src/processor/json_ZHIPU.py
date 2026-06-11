@@ -1,4 +1,4 @@
-"""ZHIPU AI官方文档：https://docs.bigmodel.cn/api-reference
+"""ZHIPU AI官方文档：https://docs.igmodel.cn/api-reference
 调用 glm-4.6v 从表格json中提取原始数据，并输出结构化json
 提示语见Prompt.txt"""
 
